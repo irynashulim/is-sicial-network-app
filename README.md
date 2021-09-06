@@ -1,1 +1,1 @@
-# is-sicial-network-app
+# is-social-network-app
