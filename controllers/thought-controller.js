@@ -128,6 +128,6 @@ const thoughtController = {
         res.status(400).json(err);
       });
   },
-}
+};
 
 module.exports = thoughtController;

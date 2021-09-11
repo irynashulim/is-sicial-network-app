@@ -37,7 +37,7 @@ const ThoughtSchema = new Schema (
             type:String,
             required: true,
             minLength:1,
-            maxLength:280
+            maxLength:350
         },
         createdAt:{
             type:Date,
@@ -46,7 +46,8 @@ const ThoughtSchema = new Schema (
         },
         username:{
             type: String,
-            required:true
+            required:true,
+            ref: "User"
         },
         reaction: [ReactionSchema]
     },

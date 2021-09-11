@@ -1,17 +1,25 @@
 {
-  "name": "18-nosql",
+  "name": "is-social-network-app",
   "version": "1.0.0",
-  "private": true,
   "description": "",
   "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.13.8"
-  }
+    "mongoose": "^6.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irynashulim/is-social-network-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irynashulim/is-social-network-app/issues"
+  },
+  "homepage": "https://github.com/irynashulim/is-social-network-app#readme"
 }
