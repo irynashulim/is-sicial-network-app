@@ -5,8 +5,8 @@ const {
     createUser,
     updateUser,
     deleteUser,
-    addFriend,
-    deleteFriend,
+    //addFriend,
+    //deleteFriend,
 } = require('../../controllers/user-controller');
 // Set up GET all and POST at /api/users
 router
@@ -19,8 +19,8 @@ router.route('/:id')
     .put(updateUser)
     .delete(deleteUser);
 
-router.route('/:userId/friends/:friendId')
-    .post(addFriend) //will do bonus later if i have time
-    .delete(deleteFriend) //will do bonus later if i have time
+//router.route('/:userId/friends/:friendId')
+    //.post(addFriend) //will do bonus later if i have time
+    //.delete(deleteFriend) //will do bonus later if i have time
 
 module.exports = router;
