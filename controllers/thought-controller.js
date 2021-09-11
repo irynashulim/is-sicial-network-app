@@ -1,11 +1,11 @@
-const { User, Thought, Reaction } = require("../models");
+const { User, Thought } = require("../models");
 
 const thoughtController = {
   // /api/thought route
   //get all thoughts
   getAllThoughts(req, res) {
     Thought.find({})
-      .populate({ path: "reactions", select: "-__v" })
+      .populate({ path: "users", select: "-__v" })
       .select("-__v")
       .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => {
@@ -16,7 +16,7 @@ const thoughtController = {
   //get single thought by id
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
-      .populate({ path: "reactions", select: "-__v" })
+      .populate({ path: "users", select: "-__v" })
       .select("-__v")
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
@@ -96,7 +96,7 @@ const thoughtController = {
   addReaction({ params, body }, res) {
     Thought.findOneAndUpdate(
       { _id: params.thoughtid },
-      { $addToSet: { reactions: body } },
+      { $push: { reactions: body } },
       { new: true }
     )
       .then((dbThoughData) => {
@@ -110,7 +110,7 @@ const thoughtController = {
         res.status(400).json(err);
       });
   },
-  //delete reactions reactionid value
+  //delete reactions reaction id value
   deleteReaction({ params, body }, res) {
     Thought.findOneAndUpdate(
       { _id: params.thoughtId },
