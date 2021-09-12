@@ -6,21 +6,24 @@ const userController = {
     // get all users
     getAllUsers(req, res) {
         User.find({})
-            .populate({ path: "thoughts", select: "-__v" })
+            .populate({
+                path: "thoughts",
+                select: "-__v"
+            })
             .select('-__v')
             .then(dbUserData => res.json(dbUserData))
             .catch(err => {
                 console.log(err);
-                res.json(err);
+                res.status(400).json(err);
             });
     },
     // get single user by id
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
-            .populate([
-                { path: 'thoughts', select: '-__v' },
-                { path: 'friends', select: '-__v' }
-            ])
+            .populate({
+                path: 'thoughts', 
+                select: '-__v' ,
+            })
             .select('-__v')
             .then(dbUserData => {
                 if (!dbUserData) {
@@ -30,18 +33,15 @@ const userController = {
                 res.json(dbUserData);
             })
             .catch(err => {
-                res.json(err);
+                console.log(err);
+                res.status(400).json(err);
             })
     },
     // create a new user
     createUser({ body }, res) {
         User.create(body)
-            .then(dbUserData => {
-                res.json(dbUserData)
-            })
-            .catch(err => {
-                res.json(err)
-            })
+            .then(dbUserData => res.json(dbUserData))
+            .catch(err => res.json(err))
     },
     //update user by id
     updateUser({ params, body }, res) {
@@ -61,7 +61,7 @@ const userController = {
     //delete user
     deleteUser({ params }, res) {
         User.findOneAndDelete({ _id: params.id })
-            .then((dbUserData) => {
+            .then(dbUserData => {
                 if (!dbUserData) {
                     res.status(404).json({ message: "No user found with this id!" });
                     return;
