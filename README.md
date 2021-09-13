@@ -9,7 +9,7 @@
 * Express.js
 * Node.js
 
-**Link to walkthrough video:** 
+**Link to walkthrough video:** https://youtu.be/q2TkhBCVIfA
 ## Table of Contents
   * [Instalation](#instalation)
   * [Usage](#usage)
